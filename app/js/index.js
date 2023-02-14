@@ -5,23 +5,37 @@ import $ from 'jquery';
 import { log, logTitle } from 'logger';
 /* your imports */
 
-logTitle('Arrow Functions')
+logTitle('Object Destructure')
 
-const hello = () => {
-    const es6 = 'ES6';
-    return `Hello ${es6}`;
+const getUser = () => {
+    return {
+      name: 'John',
+      surname: 'Doe',
+      gender: 'male',
+      address: {
+        country: 'United States',
+        city: 'California',
+        postCode: 'CA',
+        fullAddress: {
+          doorNumber: 22,
+          street: 'LA st'
+        }
+      },
+      age: 29
+    }
   };
   
-  const powers = [1,2,3,4,5].map((number, index) =>  Math.pow(number, index));
+  const user = getUser();
   
+//   const name = user.name;
+//   const age = user.age;
+//   const country = user.address.country;
+//   const doorNumber = user.address.fullAddress.doorNumber;
   
-  const add = (n1, n2) => n1 + n2;
-  
-  const milesToKm = miles => miles * 1.60934;
-  
-  log(hello());
-  log(powers);
-  log(add(100,100));
-  log(milesToKm(8));
-
+  const {name, age, address: { country: theCountry}} = user
+  const {address: {fullAddress: {doorNumber: number}}} = user
+  log(name);
+  log(age);
+  log(theCountry);
+  log(number);
   
