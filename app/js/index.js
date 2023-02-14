@@ -5,23 +5,15 @@ import $ from 'jquery';
 import { log, logTitle } from 'logger';
 /* your imports */
 
-logTitle('Arrow Functions')
+logTitle('Array Dstructure')
 
-const hello = () => {
-    const es6 = 'ES6';
-    return `Hello ${es6}`;
-  };
-  
-  const powers = [1,2,3,4,5].map((number, index) =>  Math.pow(number, index));
-  
-  
-  const add = (n1, n2) => n1 + n2;
-  
-  const milesToKm = miles => miles * 1.60934;
-  
-  log(hello());
-  log(powers);
-  log(add(100,100));
-  log(milesToKm(8));
+const names = ['Anna', 'Mariam', 'Joe', 'Mark', 'Matt'];
+// const anna = names[0];
+// const mariam = names[1];
+// const joe = names[2];
 
-  
+const [anna, , joe, ...toRestName] = names
+log(`${anna}  ${joe}`);
+log(toRestName)
+
+
