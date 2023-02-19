@@ -5,23 +5,69 @@ import $ from 'jquery';
 import { log, logTitle } from 'logger';
 /* your imports */
 
-logTitle('Arrow Functions')
+logTitle('Classes in nutshell')
 
-const hello = () => {
-    const es6 = 'ES6';
-    return `Hello ${es6}`;
-  };
-  
-  const powers = [1,2,3,4,5].map((number, index) =>  Math.pow(number, index));
-  
-  
-  const add = (n1, n2) => n1 + n2;
-  
-  const milesToKm = miles => miles * 1.60934;
-  
-  log(hello());
-  log(powers);
-  log(add(100,100));
-  log(milesToKm(8));
+class Animal {
+    constructor(name, age) {
+        log(`${name} is an Animal and was created.`)
+        this.name = name;
+        this.age = age;
+    }
+
+    static iAmAStaticMethod() {
+        log('I am a STATIC method in Animal Class.')
+    }
+
+    eat() {
+        log(`${this.name} is eating.`);
+    }
+    sleep() {
+        log(`${this.name} is sleeping.`);
+    }
+
+    wakeUp() {
+        log(`${this.name} is waking up.`)
+    }
+
+    logAge() {
+        log( `${this.name} is ${this.age} years old.` );
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, age, breed) {
+        super(name, age);
+        this.breed = breed;
+    }
+
+    logBread() {
+        log(`${this.name} is a ${this.breed}`)
+    }
+
+    logAgeFromDog() {
+        super.logAge();
+    }
+}
+
+class Cat extends Animal {
+    constructor(name, age) {
+        super(name, age);
+    }
+    logAgeFromCat() {
+        super.logAge();
+    }
+}
+
+Animal.iAmAStaticMethod();
+const bullDog = new Dog('boby', 3, 'bullDog');
+bullDog.logBread();
+bullDog.logAge();
+
+log('-------------')
+const moss = new Cat('Moss', 4);
+moss.eat();
+moss.sleep();
+moss.wakeUp();
+moss.logAgeFromCat();
 
   
