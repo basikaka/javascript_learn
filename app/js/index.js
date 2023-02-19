@@ -24,4 +24,33 @@ const hello = () => {
   log(add(100,100));
   log(milesToKm(8));
 
+  log('-------------->->')
+//   const getRandomUsers = n => {
+//     const fetchRandomUsers = fetch(`https://randomuser.me/api/?results=${n}`)
+//     fetchRandomUsers.then(data => {
+//       data.json().then(randomUsers => {
+//         log(JSON.stringify(randomUsers.results.length));
+//         randomUsers.results.forEach(user => {
+//           const {gender, email} = user;
+//           log(`${gender} - ${email}`);
+//         });
+//       })
+//     });
+//   }
+
+const getRandomUsers = num => {
+    const fetchRandomUsers = fetch(`https://randomuser.me/api/?results=${num}`);
+    fetchRandomUsers.then(data => {
+        data.json().then(randomUsers => {
+            log( JSON.stringify(randomUsers.results.length) );
+            randomUsers.results.forEach(user => {
+                const {gender, email} = user;
+                log(`${gender} - ${email}`);
+            });
+        })
+    });
+}
+  
+getRandomUsers(5);
+
   
