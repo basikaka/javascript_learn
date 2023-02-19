@@ -5,23 +5,21 @@ import $ from 'jquery';
 import { log, logTitle } from 'logger';
 /* your imports */
 
-logTitle('Arrow Functions')
+logTitle('Generator')
 
-const hello = () => {
-    const es6 = 'ES6';
-    return `Hello ${es6}`;
-  };
-  
-  const powers = [1,2,3,4,5].map((number, index) =>  Math.pow(number, index));
-  
-  
-  const add = (n1, n2) => n1 + n2;
-  
-  const milesToKm = miles => miles * 1.60934;
-  
-  log(hello());
-  log(powers);
-  log(add(100,100));
-  log(milesToKm(8));
+const getStudent = function* () {
+    yield 'a';
+    yield 23;
+    yield true;
+    yield {name: 'Amigos', age: 24};
+
+}
+
+const studentGen = getStudent();
+let result = studentGen.next();
+while (!result.done) {
+    console.log(result);
+    result = studentGen.next();
+}
 
   
